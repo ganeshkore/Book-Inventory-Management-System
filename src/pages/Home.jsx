@@ -1,13 +1,23 @@
 import { useEffect, useState } from "react";
-import { getBooks } from "../services/bookService";
+import { getBooks, deleteBook } from "../services/bookService";
 import { Link } from "react-router-dom";
 
 const Home = () => {
   const [books, setBooks] = useState([]);
 
-  useEffect(() => {
+  const fetchBooks = () => {
     getBooks().then((res) => setBooks(res.data));
+  };
+
+  useEffect(() => {
+    fetchBooks();
   }, []);
+
+  const handleDelete = (id) => {
+    if (window.confirm("Are you sure you want to delete this book?")) {
+      deleteBook(id).then(() => fetchBooks());
+    }
+  };
 
   return (
     <div style={{ padding: "20px", maxHeight: "100vh", overflowY: "auto" }}>
@@ -36,7 +46,7 @@ const Home = () => {
               <td>
                 <Link to={`/book/${book.id}`}>View</Link>{" | "}
                 <Link to={`/edit/${book.id}`}>Edit</Link>{" | "}
-                <button>Delete</button>
+                <button onClick={() => handleDelete(book.id)}>Delete</button>
               </td>
             </tr>
           ))}
