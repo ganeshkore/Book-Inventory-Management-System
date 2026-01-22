@@ -9,6 +9,16 @@
       "email": "publisher@cleancode.com",
       "age": 15,
       "overview": "A handbook of agile software craftsmanship."
+    },
+    {
+      "title": "deathnote",
+      "author": "l Lawliet",
+      "publisher": "anime",
+      "publishedDate": "\"22/01/2026",
+      "email": "lawliet@gmail.com",
+      "age": 25,
+      "overview": "Best anime in the world",
+      "id": 2
     }
   ]
 }
