@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/books";
+const API_URL = "https://69731aa4b5f46f8b58262635.mockapi.io/books";
 
 export const getBooks = () => axios.get(API_URL);
 export const getBookById = (id) => axios.get(`${API_URL}/${id}`);

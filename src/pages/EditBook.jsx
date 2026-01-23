@@ -62,7 +62,7 @@ const EditBook = () => {
   return (
   <div className="max-w-3xl mx-auto p-4 md:p-8">
     <div className="bg-white/5 backdrop-blur rounded-2xl p-6 border border-gray-800 animate-fadeIn">
-      <h2 className="text-2xl mb-6 font-semibold">Add New Book</h2>
+      <h2 className="text-2xl mb-6 font-semibold">Edit Book</h2>
 
       <form onSubmit={handleSubmit} className="grid gap-4">
         {["title", "author", "publisher", "publishedDate", "email", "age"].map(
