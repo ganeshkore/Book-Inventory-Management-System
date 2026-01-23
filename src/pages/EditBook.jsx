@@ -60,35 +60,48 @@ const EditBook = () => {
   };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h2>Edit Book</h2>
+  <div className="max-w-3xl mx-auto p-4 md:p-8">
+    <div className="bg-white/5 backdrop-blur rounded-2xl p-6 border border-gray-800 animate-fadeIn">
+      <h2 className="text-2xl mb-6 font-semibold">Add New Book</h2>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="grid gap-4">
         {["title", "author", "publisher", "publishedDate", "email", "age"].map(
           (field) => (
             <div key={field}>
               <input
                 type={field === "age" ? "number" : field === "email" ? "email" : "text"}
                 name={field}
+                placeholder={field}
                 value={book[field]}
                 onChange={handleChange}
+                className="w-full px-4 py-2 rounded-lg bg-black/40 border border-gray-700 focus:outline-none focus:border-indigo-500"
               />
-              {errors[field] && <p style={{ color: "red" }}>{errors[field]}</p>}
+              {errors[field] && (
+                <p className="text-red-400 text-sm mt-1">
+                  {errors[field]}
+                </p>
+              )}
             </div>
           )
         )}
 
         <textarea
           name="overview"
+          placeholder="Overview"
           value={book.overview}
           onChange={handleChange}
+          rows="4"
+          className="w-full px-4 py-2 rounded-lg bg-black/40 border border-gray-700 focus:outline-none focus:border-indigo-500"
         />
-        {errors.overview && <p style={{ color: "red" }}>{errors.overview}</p>}
 
-        <button type="submit">Update Book</button>
+        <button className="mt-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 transition">
+          Save Book
+        </button>
       </form>
     </div>
-  );
+  </div>
+);
+
 };
 
 export default EditBook;

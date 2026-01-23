@@ -13,21 +13,33 @@ const BookDetails = () => {
   if (!book) return <p>Loading...</p>;
 
   return (
-    <div style={{ padding: "20px", maxHeight: "100vh", overflowY: "auto" }}>
-      <h2>{book.title}</h2>
+  <div className="max-w-4xl mx-auto p-4 md:p-8">
+    <div className="bg-white/5 backdrop-blur rounded-2xl p-6 border border-gray-800 animate-fadeIn">
+      <h1 className="text-3xl font-semibold mb-4">{book.title}</h1>
 
-      <p><strong>Author:</strong> {book.author}</p>
-      <p><strong>Publisher:</strong> {book.publisher}</p>
-      <p><strong>Published Date:</strong> {book.publishedDate}</p>
-      <p><strong>Email:</strong> {book.email}</p>
-      <p><strong>Age:</strong> {book.age}</p>
+      <div className="grid md:grid-cols-2 gap-4 text-sm">
+        <p><span className="text-gray-400">Author:</span> {book.author}</p>
+        <p><span className="text-gray-400">Publisher:</span> {book.publisher}</p>
+        <p><span className="text-gray-400">Published:</span> {book.publishedDate}</p>
+        <p><span className="text-gray-400">Email:</span> {book.email}</p>
+        <p><span className="text-gray-400">Age:</span> {book.age}</p>
+      </div>
 
-      <h4>Overview</h4>
-      <p>{book.overview}</p>
+      <div className="mt-6">
+        <h3 className="text-lg mb-2">Overview</h3>
+        <p className="text-gray-300 leading-relaxed">{book.overview}</p>
+      </div>
 
-      <Link to="/">⬅ Back to Home</Link>
+      <Link
+        to="/"
+        className="inline-block mt-6 text-indigo-400 hover:underline"
+      >
+        ← Back
+      </Link>
     </div>
-  );
+  </div>
+);
+
 };
 
 export default BookDetails;

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { getBooks, deleteBook } from "../services/bookService";
 import { Link } from "react-router-dom";
-
 const Home = () => {
   const [books, setBooks] = useState([]);
 
@@ -14,46 +13,74 @@ const Home = () => {
   }, []);
 
   const handleDelete = (id) => {
-    if (window.confirm("Are you sure you want to delete this book?")) {
-      deleteBook(id).then(() => fetchBooks());
+    if (confirm("Delete this book?")) {
+      deleteBook(id).then(fetchBooks);
     }
   };
 
   return (
-    <div style={{ padding: "20px", maxHeight: "100vh", overflowY: "auto" }}>
-      <h2>Book Inventory</h2>
+    <div className="p-4 md:p-8 max-w-7xl mx-auto">
+      <div className="flex flex-col md:flex-row justify-between items-center mb-6">
+        <h1 className="text-2xl md:text-3xl font-semibold">
+          📚 Book Inventory
+        </h1>
 
-      <Link to="/add">
-        <button>Add Book</button>
-      </Link>
+        <Link
+          to="/add"
+          className="mt-3 md:mt-0 px-5 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 transition"
+        >
+          + Add Book
+        </Link>
+      </div>
 
-      <table border="1" width="100%" cellPadding="10" style={{ marginTop: "15px" }}>
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Publisher</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {books.map((book) => (
-            <tr key={book.id}>
-              <td>{book.title}</td>
-              <td>{book.author}</td>
-              <td>{book.publisher}</td>
-              <td>
-                <Link to={`/book/${book.id}`}>View</Link>{" | "}
-                <Link to={`/edit/${book.id}`}>Edit</Link>{" | "}
-                <button onClick={() => handleDelete(book.id)}>Delete</button>
-              </td>
+      <div className="overflow-x-auto rounded-xl border border-gray-800 backdrop-blur bg-white/5">
+        <table className="w-full text-sm">
+          <thead className="bg-white/10">
+            <tr>
+              <th className="p-4 text-left">Title</th>
+              <th className="p-4 text-left">Author</th>
+              <th className="p-4 text-left hidden md:table-cell">Publisher</th>
+              <th className="p-4 text-center">Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+
+          <tbody>
+            {books.map((book) => (
+              <tr
+                key={book.id}
+                className="border-t border-gray-800 hover:bg-white/5 transition"
+              >
+                <td className="p-4">{book.title}</td>
+                <td className="p-4">{book.author}</td>
+                <td className="p-4 hidden md:table-cell">
+                  {book.publisher}
+                </td>
+                <td className="p-4 flex gap-3 justify-center">
+                  <Link
+                    to={`/book/${book.id}`}
+                    className="text-indigo-400 hover:underline"
+                  >
+                    View
+                  </Link>
+                  <Link
+                    to={`/edit/${book.id}`}
+                    className="text-yellow-400 hover:underline"
+                  >
+                    Edit
+                  </Link>
+                  <button
+                    onClick={() => handleDelete(book.id)}
+                    className="text-red-400 hover:underline"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
-
 export default Home;
