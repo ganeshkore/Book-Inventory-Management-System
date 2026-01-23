@@ -19,6 +19,36 @@
       "age": 25,
       "overview": "Best anime in the world",
       "id": 2
+    },
+    {
+      "title": "Promised NeverthLand",
+      "author": "Normen",
+      "publisher": "Ray",
+      "publishedDate": "23/01/2026",
+      "email": "normen@ray.com",
+      "age": 34,
+      "overview": "promised neverthland anime series",
+      "id": 3
+    },
+    {
+      "title": "New Book",
+      "author": "Ganesh",
+      "publisher": "Ganesh",
+      "publishedDate": "23/01/2026",
+      "email": "test@gmail.com",
+      "age": 23,
+      "overview": "test book",
+      "id": 4
+    },
+    {
+      "title": "Test ",
+      "author": "deo",
+      "publisher": "john doe",
+      "publishedDate": "23/01/2026",
+      "email": "sample@gmail.com",
+      "age": 36,
+      "overview": "sample demo",
+      "id": 5
     }
   ]
 }
